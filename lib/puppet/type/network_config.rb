@@ -24,7 +24,7 @@ module Puppet
 
     newparam(:bootproto) do
       desc "Boot priority for the network device"
-      newvalues(:dhcp, :static, :none)
+      newvalues(:dhcp, :static, :dialup, :none)
       defaultto(:dhcp)
     end
 
@@ -99,7 +99,7 @@ module Puppet
 
     newparam(:type) do
       desc "Type of the device"
-      newvalues(:Ethernet, :Bridge, :Bonding)
+      newvalues(:Ethernet, :Bridge, :Bonding, :xDSL)
     end
 
     newparam(:vlan) do
@@ -123,6 +123,80 @@ module Puppet
 
     newparam(:slave) do
       desc "Configures whether or not the device is enslaved to a bonding device"
+      newvalues(:yes, :no)
+    end
+
+    newparam(:ipv6init) do
+      desc "Controls IPv6 configuration for this interface"
+      newvalues(:yes, :no)
+    end
+
+    newparam(:pidfile) do
+      desc "Lockfile location for the xDSL connection"
+    end
+
+    newparam(:firewall) do
+      desc "Firewall type of the xDSL connection"
+      newvalues(:NONE, :STANDALONE, :MASQUERADE)
+    end
+
+    newparam(:ping) do
+      desc "Character to print during xDSL connection setup"
+    end
+
+    newparam(:pppoe_timeout) do
+      desc "Timeout in seconds without traffic after which the xDSL session will be torn down"
+    end
+
+    newparam(:lcp_failure) do
+      desc "How many unanswered LCP echo requests pass before xDSL peer is considered dead"
+    end
+
+    newparam(:lcp_interval) do
+      desc "Interval in seconds between send LCP echo requests"
+    end
+
+    newparam(:clampmss) do
+      desc "MSS Clamping for xDSL connections"
+    end
+
+    newparam(:connect_poll) do
+      desc "How often to check during xDSL connection setup if the connection timeout expired"
+    end
+
+    newparam(:connect_timeout) do
+      desc "Initial xDSL connection timeout"
+    end
+
+    newparam(:idletimeout) do
+      desc "Timeout when a xDSL connection without traffic can be considered idle and be torn down in a on-demand dial setup"
+    end
+
+    newparam(:persist) do
+      desc "Whether to persist connecting via pppd after a connection is terminated"
+      newvalues(:yes, :no)
+    end
+
+    newparam(:synchronous) do
+      desc "Use synchronous PPP encapsulation for xDSL connections"
+      newvalues(:yes, :no)
+    end
+
+    newparam(:defroute) do
+      desc "Set the default route to the xDSL connection"
+      newvalues(:yes, :no)
+    end
+
+    newparam(:user) do
+      desc "The username to use for the xDSL connection"
+    end
+
+    newparam(:eth) do
+      desc "The ethernet interface to use for the xDSL pppoe connection"
+    end
+
+    newparam(:demand) do
+      desc "Whether to create a dial on-demand connection"
       newvalues(:yes, :no)
     end
   end

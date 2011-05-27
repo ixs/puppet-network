@@ -104,6 +104,35 @@ network_config { "eth2": master => "bond0", slave => "yes" }
 network_config { "eth3": master => "bond0", slave => "yes" }
 </pre>
 
+#### xDSL Interfaces
+<pre>
+network_config { "foobar":
+#    device => "ppp0",
+    bootproto => "dialup",
+    type => "xDSL",
+    userctl => "yes",
+    peerdns => "no",
+    ipv6init => "no",
+    pidfile => "/var/run/pppoe-adsl.pid",
+    firewall => "NONE",
+    ping => ".",
+    pppoe_timeout => 80,
+    lcp_failure => 3,
+    lcp_interval => 20,
+    clampmss => 1412,
+    connect_poll => 6,
+    connect_timeout => 60,
+    idletimeout => 600,
+    persist => no,
+    synchronous => no,
+    defroute => yes,
+    user => "user@pppoe",
+    eth => "eth1",
+#               provider => "foobar",
+    demand => "no",
+}
+</pre>
+
 See [kernel documentation for bonding](http://www.kernel.org/doc/Documentation/networking/bonding.txt) for more information.
 
 ## The 'network_interface' type
