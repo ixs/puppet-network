@@ -104,6 +104,8 @@ network_config { "eth2": master => "bond0", slave => "yes" }
 network_config { "eth3": master => "bond0", slave => "yes" }
 </pre>
 
+See [kernel documentation for bonding](http://www.kernel.org/doc/Documentation/networking/bonding.txt) for more information.
+
 #### xDSL Interfaces
 <pre>
 network_config { "foobar":
@@ -132,8 +134,6 @@ network_config { "foobar":
     demand => "no",
 }
 </pre>
-
-See [kernel documentation for bonding](http://www.kernel.org/doc/Documentation/networking/bonding.txt) for more information.
 
 ## The 'network_interface' type
 
